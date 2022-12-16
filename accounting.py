@@ -1,7 +1,8 @@
-melon_cost = 1.00
-
-
+MELON_COST = 1.00
+#
 def pay_status(filename):
+    """calculates cost of melons and determines who has underpaid or"""
+    
     data = open(filename)
 
     for line in data:
@@ -14,9 +15,8 @@ def pay_status(filename):
         melons_qnty = float(order[2]) #why float here -- because these are strings and need to be floats
         amnt_paid = float(order[3]) #how would i typecast as integer -- answered above
 
-        expected_price = melons_qnty * melon_cost
+        expected_price = melons_qnty * MELON_COST
         # print customer paid this amount expected and expected price
-
         if expected_price < amnt_paid:
             print (f"{full_name} paid ${amnt_paid}, expected", f"{expected_price: .2f}")
             print(f"{full_name} has overpaid for their melons.")
@@ -27,10 +27,5 @@ def pay_status(filename):
 
 
     data.close()
-    # print general payment info
-    # print payment status
-    # print overpaid and underpaid statements
-    # close file
-    # call function
 
 pay_status("customer-orders.txt")
